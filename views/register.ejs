@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - MediCare</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+<%- include("partials/navbar") %>
+<section class="register-section">
+
+    <!-- Left Side -->
+
+    <div class="register-left">
+
+        <h1>Create Your Account</h1>
+
+        <p>
+            Join MediCare and experience modern healthcare
+            services with easy appointment booking and secure
+            patient management.
+        </p>
+
+        <div class="register-features">
+
+            <p>✔ Easy Registration</p>
+            <p>✔ Book Appointments Online</p>
+            <p>✔ Expert Doctors</p>
+            <p>✔ 24×7 Healthcare Support</p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- Right Side -->
+
+    <div class="register-box">
+
+        <h2>Register</h2>
+
+        <form action="/register" method="POST">
+
+            <input type="text" name="fullname" placeholder="Full Name" required>
+
+            <input type="email" name="email" placeholder="Email Address" required>
+
+           
+            <input type="password" name="password" placeholder="Password" required>
+
+            <input type="password" name="confirmPassword" placeholder="Confirm Password" required>
+
+            <button type="submit">Create Account</button>
+
+        </form>
+
+        <p class="login-link">
+            Already have an account?
+            <a href="/login">Login</a>
+        </p>
+
+    </div>
+
+</section>
+<%- include("partials/footer") %>
+</body>
+</html>

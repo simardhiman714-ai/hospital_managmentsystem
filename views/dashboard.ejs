@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediCare Dashboard</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <h2>🏥 MediCare</h2>
+
+        <a href="/dashboard">Dashboard</a>
+        <a href="/doctors">👨‍⚕️ Doctors</a>
+        <a href="/services">💊 Services</a>
+        <a href="/contact">📞 Contact</a>
+        <a href="/patient">🩺patients</a>
+        <a href="/about">🏥about</a>
+        <a href="/login">🚪 Logout</a>
+        
+    </aside>
+
+
+    <!-- Main Area -->
+    <main class="content">
+
+        <div class="topbar">
+            <h1>Welcome Admin 👋</h1>
+            <div class="profile">
+                🔔 👤
+            </div>
+        </div>
+
+
+        <p>Manage hospital activities from one place.</p>
+
+
+        <!-- Stats Cards -->
+        <div class="cards">
+
+            <div class="card">
+                <h3>👨‍⚕️ Doctors</h3>
+                <h2>25</h2>
+                <p>Available Doctors</p>
+            </div>
+
+            <div class="card">
+                <h3>🧑 Patients</h3>
+                <h2>150</h2>
+                <p>Total Patients</p>
+            </div>
+
+            <div class="card">
+                <h3>📅 Appointments</h3>
+                <h2>60</h2>
+                <p>Today's Booking</p>
+            </div>
+
+            <div class="card">
+                <h3>🛏 Beds</h3>
+                <h2>40</h2>
+                <p>Available Beds</p>
+            </div>
+
+        </div>
+
+
+        <!-- Appointment Table -->
+
+        <div class="section">
+
+            <h2>Recent Appointments</h2>
+
+            <table>
+
+                <tr>
+                    <th>Patient</th>
+                    <th>Doctor</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                </tr>
+
+                <tr>
+                    <td>Rahul</td>
+                    <td>Dr. Sharma</td>
+                    <td>14 July</td>
+                    <td>Confirmed</td>
+                </tr>
+
+                <tr>
+                    <td>Simran</td>
+                    <td>Dr. Mehta</td>
+                    <td>15 July</td>
+                    <td>Pending</td>
+                </tr>
+
+            </table>
+
+        </div>
+
+
+
+        <!-- Quick Actions -->
+
+        <div class="quick-actions">
+
+            <h2>Quick Actions</h2>
+          <a href="/patient" class="btn">Add Patient</a>
+          <a href="/appointment" class="btn">Book Appointment</a>
+           <a href="/doctors" class="btn">View Doctors</a>
+        </div>
+
+
+    </main>
+
+</div>
+<%- include("partials/footer") %>
+
+</body>
+</html>

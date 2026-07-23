@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patients - MediCare</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <aside class="sidebar">
+
+        <h2>🏥 MediCare</h2>
+
+        <a href="/dashboard">Dashboard</a>
+        <a href="/patients">🧑 Patients</a>
+        <a href="/doctors">👨‍⚕️ Doctors</a>
+        <a href="/services">💊 Services</a>
+        <a href="/contact">📞 Contact</a>
+        <a href="/login">🚪 Logout</a>
+
+    </aside>
+
+
+    <main class="content">
+
+        <div class="topbar">
+            <h1>Patient Management</h1>
+            <div class="profile">👤</div>
+        </div>
+
+        <p>Manage patient records and health information.</p>
+
+
+        <!-- Patient Stats -->
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>🧑 Total Patients</h3>
+                <h2>7</h2>
+                <p>Registered</p>
+            </div>
+
+
+            <div class="card">
+                <h3>🏥 Admitted</h3>
+                <h2>3</h2>
+                <p>Currently admitted</p>
+            </div>
+
+
+            <div class="card">
+                <h3>✅ Recovered</h3>
+                <h2>90</h2>
+                <p>Successfully treated</p>
+            </div>
+
+
+            <div class="card">
+                <h3>⏳ Pending</h3>
+                <h2>20</h2>
+                <p>Under treatment</p>
+            </div>
+
+        </div>
+
+
+
+        <!-- Search -->
+<form action="/patient" method="GET">
+    <input
+        type="text"
+        name="search"
+        class="search-box"
+        placeholder="🔍 Search patient by name..."
+    >
+    <button type="submit">Search</button>
+</form>
+        
+
+
+
+        <!-- Patient Table -->
+
+        <div class="section">
+
+            <h2>Patient List</h2>
+
+            <table>
+            
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Disease</th>
+                    <th>Blood Group</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+
+<% patients.forEach(patient => { %>
+<tr>
+    <td><%= patient.name %></td>
+    <td><%= patient.age %></td>
+    <td><%= patient.gender %></td>
+    <td><%= patient.disease %></td>
+    <td><%= patient.blood_group %></td>
+    <td><%= patient.status %></td>
+    <td>
+    <a class="edit-btn" href="/patient/edit/<%= patient.id %>">✏️ Edit</a>
+
+    <a class="delete-btn"
+       href="/patient/delete/<%= patient.id %>"
+       onclick="return confirm('Delete this patient?')">
+       🗑 Delete
+    </a>
+</td>
+</tr>
+<% }) %>
+</table>
+        </div>
+
+
+
+        <!-- Activity -->
+
+        <div class="section">
+
+            <h2>Recent Activity</h2>
+
+            <p>✔ Rahul Sharma admitted today</p>
+            <p>✔ New appointment booked by Simran</p>
+            <p>✔ Aman Singh report uploaded</p>
+
+        </div>
+<div class="section add-patient">
+
+        <h2>Add Patient</h2>
+
+        <form action="/patient/add" method="POST">
+
+            <input type="text" name="name" placeholder="Patient Name" required>
+
+            <input type="number" name="age" placeholder="Age" required>
+
+            <input type="text" name="gender" placeholder="Gender" required>
+
+            <input type="text" name="phone" placeholder="Phone Number" required>
+
+            <input type="text" name="disease" placeholder="Disease" required>
+
+            <input type="text" name="blood_group" placeholder="Blood Group" required>
+
+            <select name="status" required>
+                <option value="">Select Status</option>
+                <option>Admitted</option>
+                <option>Recovered</option>
+                <option>Pending</option>
+            </select>
+
+            <button type="submit">Add Patient</button>
+</form>
+    </main>
+
+</div>
+<%- include("partials/footer") %>
+</body>
+</html>

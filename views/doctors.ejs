@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctors - MediCare</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+<%- include("partials/navbar") %>
+<section class="doctor-hero">
+
+    <h1>Meet Our Expert Doctors 👨‍⚕️</h1>
+
+    <p>
+        Our experienced specialists provide quality healthcare with
+        compassion and advanced medical treatment.
+    </p>
+
+</section>
+
+
+<div class="doctor-search">
+<form action="/doctors" method="GET">
+        <input
+            type="text"
+            name="search"
+            placeholder="🔍 Search Doctor">
+        <button type="submit">Search</button>
+    </form>
+</div>
+    
+
+<section class="doctor-grid">
+
+    <div class="doctor-card">
+
+        <img src="/images/doctorcard2.jpg" alt="Doctor">
+
+        <h2>Dr. Anamika vohra</h2>
+
+        <p>Cardiologist</p>
+
+        <p>Experience : 12 Years</p>
+
+        <p>🕒 9 AM - 4 PM</p>
+        <button onclick="window.location.href='/appointment'" class="btn1">
+    Book Appointment
+</button>
+       
+    </div>
+
+
+    <div class="doctor-card">
+
+        <img src="/images/doctorcard3.jpg" alt="Doctor">
+
+        <h2>Dr.RAJ Tandon</h2>
+
+        <p>Dentist</p>
+
+        <p>Experience : 8 Years</p>
+
+        <p>🕒 10 AM - 6 PM</p>
+
+        <button onclick="window.location.href='/appointment'" class="btn1">
+    Book Appointment
+</button>
+
+    </div>
+
+
+    <div class="doctor-card">
+
+        <img src="/images/doctorcard1.jpg" alt="Doctor">
+
+        <h2>Dr. Aman Verma</h2>
+
+        <p>Neurologist</p>
+
+        <p>Experience : 15 Years</p>
+
+        <p>🕒 8 AM - 2 PM</p>
+
+       <button onclick="window.location.href='/appointment'" class="btn1">
+    Book Appointment
+</button>
+
+    </div>
+
+</section>
+
+
+<section class="speciality">
+
+<h1>Departments</h1>
+
+<div class="speciality-grid">
+
+<div>❤️ Cardiology</div>
+<div>🦷 Dental</div>
+<div>👁 Eye Care</div>
+<div>🧠 Neurology</div>
+<div>🩺 General Medicine</div>
+<div>👶 Pediatrics</div>
+
+</div>
+
+</section>
+<div class="section add-doctor">
+
+    <h2>Add Doctor</h2>
+
+    <form action="/doctors/add" method="POST">
+
+        <input type="text" name="name" placeholder="Doctor Name" required>
+
+        <input type="text" name="specialization" placeholder="Specialization" required>
+
+        <input type="text" name="phone" placeholder="Phone Number" required>
+
+        <button type="submit">Add Doctor</button>
+
+    </form>
+
+</div>
+<section class="doctor-list">
+
+    <h1>Our Doctors</h1>
+    <p>Doctors added from the hospital database.</p>
+
+    <div class="doctor-grid">
+
+        <% doctors.forEach(doctor => { %>
+
+        <div class="doctor-card">
+
+            <!-- Doctor Initials -->
+            <div class="doctor-avatar">
+                <%= doctor.name
+                    .replace(/^Dr\.?\s*/i, "")
+                    .split(" ")
+                    .map(word => word[0])
+                    .join("")
+                    .toUpperCase() %>
+            </div>
+
+            <!-- Doctor Details -->
+            <h2><%= doctor.name %></h2>
+
+            <p><strong>Specialization:</strong> <%= doctor.specialization %></p>
+
+            <p><strong>Phone:</strong> <%= doctor.phone %></p>
+
+            <!-- Action Buttons -->
+            <div class="doctor-actions">
+
+                <a href="/doctor/edit/<%= doctor.id %>" class="edit-btn">
+                    ✏️ Edit
+                </a>
+
+                <a href="/doctor/delete/<%= doctor.id %>"
+                   class="delete-btn"
+                   onclick="return confirm('Delete this doctor?')">
+                    🗑 Delete
+                </a>
+
+            </div>
+
+        </div>
+
+        <% }) %>
+
+    </div>
+
+</section>
+
+
+
+<%- include("partials/footer") %>
+</body>
+</html>
